@@ -1,0 +1,88 @@
+.task {
+  padding: 1px 0;
+  color: $black;
+}
+
+.task__catalogue {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 340px;
+  font-size: 30px;
+  color: $white;
+  background-color: $blueLight;
+  //background-image: linear-gradient(to bottom, transparent 49.8%, $white 49.8%, $white 50.2%, transparent 50.2%);
+  counter-reset: card-number;
+
+  &--direction-column {
+    flex-direction: column;
+  }
+
+  &--align-items {
+    align-items: flex-end;
+  }
+
+  .task__inline & {
+    display: block;
+    font-size: 0;
+  }
+
+  .task__float & {
+    display: block;
+  }
+}
+
+.task__catalogue-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 200px;
+  height: 120px;
+  background-color: $blueDark;
+  text-transform: uppercase;
+  counter-increment: card-number;
+
+  &::after {
+    content: counter(card-number);
+    display: inline;
+  }
+
+  &--align-self {
+    align-self: flex-end;
+  }
+
+  .task__inline & {
+    display: inline-flex;
+    margin: 25px 9px;
+    font-size: 30px;
+    vertical-align: top;
+  }
+
+  .task__float & {
+    float: left;
+    margin: 25px 9px;
+    font-size: 30px;
+    color: $white;
+  }
+
+  .task__table & {
+    margin: 0 auto;
+  }
+}
+
+.task__catalogue-table {
+  width: 100%;
+  height: 340px;
+  color: $white;
+  background-color: $blueLight;
+  font-size: 30px;
+  counter-reset: card-number;
+
+  & td {
+    padding: 0;
+    vertical-align: middle;
+  }
+}

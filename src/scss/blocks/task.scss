@@ -1,0 +1,156 @@
+.task {
+  padding: 1px 0 300px;
+  color: $black;
+}
+
+.task__catalogue {
+  margin: 0 auto;
+  width: 880px;
+  height: 340px;
+  font-size: 30px;
+  color: $white;
+  background-color: $blueLight;
+  overflow: hidden;
+  counter-reset: card-number;
+
+  &--flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &--direction-column {
+    flex-direction: column;
+  }
+
+  &--align-items {
+    align-items: flex-end;
+  }
+
+  &--inline {
+    font-size: 0;
+  }
+  //
+  //&--float & {
+  //  display: block;
+  //}
+
+  &--table {
+    border-collapse: collapse;
+
+    td {
+      padding: 0;
+      vertical-align: middle;
+    }
+  }
+
+  &--css-tbl {
+    display: table;
+    border-collapse: collapse;
+
+    .task__tr {
+      display: table-row;
+    }
+
+    .task__td {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+.task__catalogue-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 200px;
+  min-height: 120px;
+  background-color: $blueDark;
+  text-align: center;
+  text-transform: uppercase;
+  counter-increment: card-number;
+
+  & span::after {
+    content: counter(card-number);
+    display: inline;
+  }
+
+  &--align-self {
+    align-self: stretch;
+  }
+
+  &--inline {
+    display: inline-flex;
+    margin: 25px 10px;
+    font-size: 30px;
+    vertical-align: top;
+  }
+
+  &--float {
+    float: left;
+    margin: 25px 10px;
+  }
+
+  &--table {
+    margin: 0 auto;
+  }
+}
+
+.task__accordion {
+  position: relative;
+  width: 430px;
+  max-height: unset;
+  overflow: hidden;
+  transition: height;
+  transition-duration: $transition-duration;
+}
+
+.task__accord-heading {
+  position: relative;
+  padding: 0 30px 0 0;
+  width: 430px;
+  background-color: $white;
+  border: 1px solid $blueLight;
+  z-index: 10;
+}
+
+.task__accord-ctrl {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  border: 1px solid $blueLight;
+  outline: none;
+  transform: translateY(-50%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+    border: {
+      top: 2px solid $blueDark;
+      right: 2px solid $blueDark;
+    }
+    transform: translateY(-50%) rotate(45deg);
+    transition-duration: $transition-duration;
+  }
+
+  .task__accordion--open &::after {
+    transform: translateY(-50%) rotate(135deg);
+  }
+}
+
+.task__accord--body {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid $blueLight;
+  width: 100%;
+  z-index: 1;
+}
