@@ -8,15 +8,12 @@ export default (buttonClass, openClass) => {
     const accordionEl = evt.currentTarget.parentElement.parentElement;
     const headingEl = evt.currentTarget.parentElement;
     const textEl = evt.currentTarget.parentElement.nextElementSibling;
-    // debugger;
     evt.stopPropagation();
     if (accordionEl.classList.contains(openClass)) {
-      // textEl.style.height = `0`;
       accordionEl.style.height = headingEl.offsetHeight + `px`;
       accordionEl.classList.remove(openClass);
     } else {
-      accordionEl.style.height = (headingEl.clientHeight + textEl.clientHeight) + `px`;
-      // textEl.style.height = textEl.scrollHeight + `px`;
+      accordionEl.style.height = (headingEl.offsetHeight + textEl.offsetHeight) + `px`;
       accordionEl.classList.add(openClass);
     }
   };
